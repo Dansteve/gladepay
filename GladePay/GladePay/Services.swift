@@ -18,7 +18,7 @@ public class Services {
     
     //-----------------------------Transactions--------------------------------//
     
-    func verifyTransaction(key: String, mid: String, txnRef: String, completion: @escaping (Any) -> Void) {
+    public static func verifyTransaction(key: String, mid: String, txnRef: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -38,7 +38,7 @@ public class Services {
     
     //-----------------------------Start Recurrent Transactions--------------------------------//
     
-    func recurrentTransactions(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, pin: String, amount: String, frequency: String, value: String, completion: @escaping (Any) -> Void) {
+    public static func recurrentTransactions(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, pin: String, amount: String, frequency: String, value: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -76,7 +76,7 @@ public class Services {
         }
     }
     
-    func recurrentTransactionsViaToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, amount: Int, token: String, frequency: String, value: String, completion: @escaping (Any) -> Void) {
+    public static func recurrentTransactionsViaToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, amount: Int, token: String, frequency: String, value: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -106,7 +106,7 @@ public class Services {
         }
     }
     
-    func getListOfRecurrentTransactions(key: String, mid: String, completion: @escaping (Any) -> Void) {
+    public static func getListOfRecurrentTransactions(key: String, mid: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -121,7 +121,7 @@ public class Services {
         }
     }
     
-    func getARecurruentHistory(key: String, mid: String, id: String, completion: @escaping (Any) -> Void) {
+    public static func getARecurruentHistory(key: String, mid: String, id: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -137,7 +137,7 @@ public class Services {
         }
     }
     
-    func stopRecurrentTransactions(key: String, mid: String, id: String, completion: @escaping (Any) -> Void) {
+    public static func stopRecurrentTransactions(key: String, mid: String, id: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -158,7 +158,7 @@ public class Services {
     
     //-----------------------------Start Installmental Transactions--------------------------------//
     
-    func installmentViaAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
+    public static func installmentViaAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -190,7 +190,7 @@ public class Services {
         }
     }
     
-    func installmentViaCard(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
+    public static func installmentViaCard(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -228,7 +228,7 @@ public class Services {
         
     }
     
-    func installmentViaToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, token: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
+    public static func installmentViaToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, token: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -258,7 +258,7 @@ public class Services {
         }
     }
     
-    func installmentStatus(key: String, mid: String, completion: @escaping (Any) -> Void) {
+    public static func installmentStatus(key: String, mid: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -273,7 +273,7 @@ public class Services {
         }
     }
     
-    func getListOfInstallmentalPayment(key: String, mid: String, completion: @escaping (Any) -> Void) {
+    public static func getListOfInstallmentalPayment(key: String, mid: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -292,7 +292,7 @@ public class Services {
     
     //-----------------------------Start Card--------------------------------//
     
-    func cardInitiation(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String , amount: Int, completion: @escaping (Any) -> Void) {
+    public static func cardInitiation(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String , amount: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -325,7 +325,7 @@ public class Services {
         }
     }
     
-    func cardCharge(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, pin: String, txnRef: String, amount: Int, completion: @escaping (Any) -> Void) {
+    public static func cardCharge(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, pin: String, txnRef: String, amount: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -362,7 +362,7 @@ public class Services {
     }
     
     
-    func cardValidation(key: String, mid: String, txnRef: String, otp: String, completion: @escaping (Any) -> Void) {
+    public static func cardValidation(key: String, mid: String, txnRef: String, otp: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -379,7 +379,7 @@ public class Services {
         }
     }
     
-    func chargeToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, amount: Int, token: String, completion: @escaping (Any) -> Void) {
+    public static func chargeToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, amount: Int, token: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -408,7 +408,7 @@ public class Services {
     
     //-----------------------------Account--------------------------------//
     
-    func chargeAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, completion: @escaping (Any) -> Void) {
+    public static func chargeAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -436,7 +436,7 @@ public class Services {
         }
     }
     
-    func accountValidation(key: String, mid: String, txnRef: String, otp: String, completion: @escaping (Any) -> Void) {
+    public static func accountValidation(key: String, mid: String, txnRef: String, otp: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -457,7 +457,7 @@ public class Services {
     
     //-----------------------------Start Resources--------------------------------//
     
-    func getSupportedChargeableBanks(key: String, mid: String, completion: @escaping (Any) -> Void) {
+    public static func getSupportedChargeableBanks(key: String, mid: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -472,7 +472,7 @@ public class Services {
         }
     }
     
-    func getListOfBanks(key: String, mid: String, completion: @escaping (Any) -> Void) {
+    public static func getListOfBanks(key: String, mid: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -488,7 +488,7 @@ public class Services {
         }
     }
     
-    func verifyAccountName(key: String, mid: String, accountNumber: String, bankCode: String, completion: @escaping (Any) -> Void) {
+    public static func verifyAccountName(key: String, mid: String, accountNumber: String, bankCode: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -505,7 +505,7 @@ public class Services {
         }
     }
     
-    func getCardDetails(key: String, mid: String, cardNo: String, completion: @escaping (Any) -> Void) {
+    public static func getCardDetails(key: String, mid: String, cardNo: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
