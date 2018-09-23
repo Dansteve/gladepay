@@ -156,9 +156,11 @@ public class Services {
     
     //-----------------------------End Recurrent Transactions--------------------------------//
     
-    //-----------------------------Start Installmental Transactions--------------------------------//
     
-    public static func installmentViaAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
+    
+    //-----------------------------Account--------------------------------//
+    
+    public static func chargeAccount(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, accountNumber: String, bankCode: String, amount: Int, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
@@ -166,22 +168,18 @@ public class Services {
             "action": "charge",
             "paymentType": "account",
             "user": [
-                "firstname": firstName,
-                "lastname": lastname,
-                "email": email,
-                "ip": ip,
+                "firstname":firstName,
+                "lastname":lastname,
+                "email":email,
+                "ip":ip,
                 "fingerprint": fingerprint
             ],
             "account": [
-                "accountnumber": accountNumber,
-                "bankcode": bankCode
+                "accountnumber":accountNumber,
+                "bankcode":bankCode
             ],
             "amount": amount,
-            "installment": [
-                "payment_schedule": paymentSchedule,
-                "total": total
             ]
-        ]
         Alamofire.request(paymentUrl, method: .put, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             if response.result.value != nil {
                 let jsonResponse = JSON(response.result.value!)
@@ -190,65 +188,15 @@ public class Services {
         }
     }
     
-    public static func installmentViaCard(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, cardNo: String,  expiryMonth: String, expiryYear: String, cvv: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
+    public static func accountValidation(key: String, mid: String, txnRef: String, otp: String, completion: @escaping (Any) -> Void) {
         let headers = ["Content-Type": "application/json",
                        "KEY": key,
                        "MID": mid]
-        
         let payload: [String: Any] = [
-            "action": "initiate",
-            "paymentType": "card",
-            "user": [
-                "firstname": firstName,
-                "lastname": lastname,
-                "email": email,
-                "ip": ip,
-                "fingerprint": fingerprint
-            ],
-            "card": [
-                "card_no": cardNo,
-                "expiry_month": expiryMonth,
-                "expiry_year": expiryYear,
-                "ccv": cvv
-            ],
-            "amount": amount,
-            "country": "NG",
-            "currency": "NGN",
-            "installment": [
-                "payment_schedule": paymentSchedule,
-                "total": total
-            ]
-        ]
-        Alamofire.request(paymentUrl, method: .put, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            if response.result.value != nil {
-                let jsonResponse = JSON(response.result.value!)
-                completion(jsonResponse)
-            }
-        }
-        
-    }
-    
-    public static func installmentViaToken(key: String, mid: String, firstName: String, lastname: String, email: String, ip: String, fingerprint: String, token: String, amount: Int, paymentSchedule: [String: Any], total: Int, completion: @escaping (Any) -> Void) {
-        let headers = ["Content-Type": "application/json",
-                       "KEY": key,
-                       "MID": mid]
-        
-        let payload: [String: Any] = [
-            "action": "charge",
-            "paymentType": "token",
-            "token": token,
-            "user": [
-                "firstname": firstName,
-                "lastname": lastname,
-                "email": email,
-                "ip": ip,
-                "fingerprint": fingerprint
-            ],
-            "amount": amount,
-            "installment": [
-                "payment_schedule": paymentSchedule,
-                "total": total
-            ]
+            "action":"validate",
+            "txnRef": txnRef,
+            "validate": "account",
+            "otp":otp
         ]
         Alamofire.request(paymentUrl, method: .put, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             if response.result.value != nil {
@@ -257,40 +205,7 @@ public class Services {
             }
         }
     }
-    
-    public static func installmentStatus(key: String, mid: String, completion: @escaping (Any) -> Void) {
-        let headers = ["Content-Type": "application/json",
-                       "KEY": key,
-                       "MID": mid]
-        let payload: [String: Any] = [
-            "inquire": "installments"
-        ]
-        Alamofire.request(resourcesUrl, method: .put, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            if response.result.value != nil {
-                let jsonResponse = JSON(response.result.value!)
-                completion(jsonResponse)
-            }
-        }
-    }
-    
-    public static func getListOfInstallmentalPayment(key: String, mid: String, completion: @escaping (Any) -> Void) {
-        let headers = ["Content-Type": "application/json",
-                       "KEY": key,
-                       "MID": mid]
-        let payload: [String: Any] = [
-            "inquire": "installments"
-        ]
-        Alamofire.request(resourcesUrl, method: .put, parameters: payload, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            if response.result.value != nil {
-                let jsonResponse = JSON(response.result.value!)
-                completion(jsonResponse)
-            }
-        }
-    }
-    
-    //-----------------------------Stop Installmental Transactions--------------------------------//
-    
-    
+    //-----------------------------Account--------------------------------//
     
     //-----------------------------Start Resources--------------------------------//
     
