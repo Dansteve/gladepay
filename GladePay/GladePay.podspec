@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "GladePay"
-  s.version      = "1.0.0"
+  s.version      = "1.0"
   s.summary      = "GladePay for payments"
   s.description  = "GladePay for processing payments"
 
@@ -38,7 +38,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ovansa/gladepay.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/ovansa/gladepay.git", :tag => "1.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
